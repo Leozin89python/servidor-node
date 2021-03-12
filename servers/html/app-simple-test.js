@@ -1,21 +1,14 @@
 /**node server */
 const http = require('http')
-const file = require('fs').promises
 const port = 3001
 const host = 'localhost'
 
 
+
 const requestListener = async (req, res)=>{
-   file.readFile(__dirname + '/app.html')
-        .then(page =>{
-            res.setHeader('Content_Type','text/html')
-            res.writeHead(200)
-            res.end(page)
-        }).catch( err =>{
-            res.writeHead(200)
-            res.end(err)
-            return
-        })
+    res.setHeader('Content-Type','text/html')
+    res.writeHead(200)
+    res.end('<html><body><h1>this is page in node teste server</h1></body></html>')
 }
 const app = http.createServer(requestListener)
 app.listen(port,host,()=>{
@@ -28,11 +21,7 @@ comandos de execução:
 este comando é usado no terminal de
 teste ou deploy do servidor:
 
-node app.js
-
-
-
-
+node app-simple-test.js
 
 
 só funciona em teminal linux
